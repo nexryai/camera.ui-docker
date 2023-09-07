@@ -1,5 +1,15 @@
-FROM clearlinux/node
+FROM node:18-alpine
 
-ENTRYPOINT camera.ui
+ARG UID="948"
+ARG GID="948"
 
-RUN npm i -g camera.ui@latest --unsafe-perm
+RUN apk add --no-cache ca-certificates tini \
+ && npm install -g camera.ui@latest \
+ && addgroup -g "${GID}" app \
+ && adduser -u "${UID}" -G app -D -h /app app
+
+USER app
+WORKDIR /app
+
+ENTRYPOINT ["/sbin/tini", "--"]
+CMD ["camera.ui"]
