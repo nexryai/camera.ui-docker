@@ -3,7 +3,7 @@ FROM node:18-alpine
 ARG UID="948"
 ARG GID="948"
 
-RUN apk add --no-cache ca-certificates tini \
+RUN apk add --no-cache ca-certificates tini python3 \
  && npm install -g camera.ui@latest \
  && addgroup -g "${GID}" app \
  && adduser -u "${UID}" -G app -D -h /app app
