@@ -12,10 +12,8 @@ sudo mkdir data
 sudo chown -R 948:948 data
 ```
 
-### docker-compose.yml
+### compose.yml
 ```
-version: '3.7'
-
 services:
   camera.ui:
     container_name: camera.ui
