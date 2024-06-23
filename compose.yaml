@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   camera.ui:
     container_name: camera.ui
